@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2023-09-15T10:32:37.077Z" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36" etag="XOc5vf-ooNFSLGdIkVMO" version="21.7.2" type="device">
+  <diagram name="Page-1" id="PwF5OkSnJTE2Iam2kNsb">
+    <mxGraphModel dx="1162" dy="790" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-8" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="c8lqn9VmVnDKoMPVrwVp-1" target="c8lqn9VmVnDKoMPVrwVp-3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-9" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="c8lqn9VmVnDKoMPVrwVp-1" target="c8lqn9VmVnDKoMPVrwVp-4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-10" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="c8lqn9VmVnDKoMPVrwVp-1" target="c8lqn9VmVnDKoMPVrwVp-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-1" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="440" y="670" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-2" value="Просмотр постов" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="660" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-3" value="Аутентификация" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="585" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-4" value="Создание поста" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="550" y="760" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-16" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="c8lqn9VmVnDKoMPVrwVp-5" target="c8lqn9VmVnDKoMPVrwVp-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-5" value="Комментирование поста" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="810" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-12" value="&amp;lt;&amp;lt;extends&amp;gt;&amp;gt;" style="edgeStyle=none;shape=connector;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Helvetica;fontSize=11;fontColor=default;endArrow=classic;" edge="1" parent="1" source="c8lqn9VmVnDKoMPVrwVp-11" target="c8lqn9VmVnDKoMPVrwVp-2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c8lqn9VmVnDKoMPVrwVp-11" value="Оценка поста" style="ellipse;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="200" y="505" width="160" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
