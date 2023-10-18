@@ -88,7 +88,7 @@ paths:
           description: Unauthorized
         403:
           description: Forbidden
-  /api/v2/posts:
+  /api/v1/posts:
     get:
       summary: список постов
       tags:
@@ -127,7 +127,7 @@ paths:
           description: Unauthorized
         403:
           description: Forbidden
-  /api/v2/posts/{id}:
+  /api/v1/posts/{id}:
     get:
       summary: получить пост по id
       tags:
@@ -180,7 +180,7 @@ paths:
           description: Unauthorized
         403:
           description: Forbidden
-  /api/v2/comments:
+  /api/v1/comments:
     get:
       summary: список комментариев
       tags:
