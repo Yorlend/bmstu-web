@@ -180,11 +180,11 @@ paths:
           description: Unauthorized
         403:
           description: Forbidden
-  /api/v1/comments/{id}:
+  /api/v1/posts/{id}/comments:
     get:
       summary: список комментариев
       tags:
-        - comments
+        - posts
       parameters:
         - in: path
           name: id
@@ -208,7 +208,7 @@ paths:
     post:
       summary: добавить комментарий
       tags:
-        - comments
+        - posts
       parameters:
         - in: path
           name: id
