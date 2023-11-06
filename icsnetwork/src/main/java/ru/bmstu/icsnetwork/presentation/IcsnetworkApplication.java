@@ -13,12 +13,4 @@ public class IcsnetworkApplication {
     public static void main(String[] args) {
         SpringApplication.run(IcsnetworkApplication.class, args);
     }
-
-    @Bean
-    public ApplicationRunner configure(UserRepository userRepository) {
-        return env ->
-        {
-
-        };
-    }
 }

@@ -1,5 +1,5 @@
 server:
-  port: 8181
+  port: 8080
 
 spring:
   datasource:
@@ -14,4 +14,4 @@ spring:
   security:
     user:
       name: admin
-      password: admin
+      password: $2a$12$J2hAgn1KnzCJ0xBTWftWke.dmQCHiL4HNjMgnMqXJ/hPVu33Y7MRy

@@ -12,9 +12,9 @@ import java.util.concurrent.CompletableFuture;
 
 @Service
 public class UserController implements UserResource {
-    private UseCaseExecutor useCaseExecutor;
-    private AddUserUseCase addUserUseCase;
-    private AddUserInputMapper addUserInputMapper;
+    private final UseCaseExecutor useCaseExecutor;
+    private final AddUserUseCase addUserUseCase;
+    private final AddUserInputMapper addUserInputMapper;
 
     public UserController(UseCaseExecutor useCaseExecutor,
                           AddUserUseCase addUserUseCase,
