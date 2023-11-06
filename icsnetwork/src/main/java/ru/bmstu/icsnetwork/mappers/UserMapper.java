@@ -10,6 +10,7 @@ public class UserMapper {
                 .login(userModel.getLogin())
                 .name(userModel.getName())
                 .username(userModel.getUsername())
+                .password(userModel.getPassword())
                 .build();
     }
 
@@ -19,6 +20,7 @@ public class UserMapper {
                 .login(userEntity.getLogin())
                 .name(userEntity.getName())
                 .username(userEntity.getUsername())
+                .password(userEntity.getPassword())
                 .build();
     }
 }

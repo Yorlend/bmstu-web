@@ -14,4 +14,6 @@ public interface IUserRepository {
     Optional<UserModel> findById(Long id);
 
     Optional<UserModel> findByLogin(String login);
+
+    void save(UserModel userModel);
 }

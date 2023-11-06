@@ -39,4 +39,10 @@ public class UserRepository implements IUserRepository {
         final UserEntity user = jpaUserRepository.findByLogin(login).orElseThrow();
         return Optional.of(UserMapper.userModelFromEntity(user));
     }
+
+    @Override
+    public void save(UserModel userModel) {
+        final UserEntity user = UserMapper.userEntityFromModel(userModel);
+        jpaUserRepository.save(user);
+    }
 }
