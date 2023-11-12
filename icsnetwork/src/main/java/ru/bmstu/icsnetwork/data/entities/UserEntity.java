@@ -3,10 +3,12 @@ package ru.bmstu.icsnetwork.data.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -29,6 +31,18 @@ public class UserEntity {
     private String username;
 
     private String password;
+
+    @OneToMany(mappedBy = "author")
+    @Singular
+    private List<CommentEntity> comments;
+
+    @OneToMany(mappedBy = "author")
+    @Singular
+    private List<PostEntity> posts;
+
+    @OneToMany(mappedBy = "user")
+    @Singular
+    private List<VoteEntity> votes;
 
     @Override
     public final boolean equals(Object o) {

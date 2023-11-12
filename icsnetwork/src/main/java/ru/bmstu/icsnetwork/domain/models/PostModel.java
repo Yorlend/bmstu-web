@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.Singular;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class PostModel {
     private String content;
     private String title;
     private UserModel author;
-    private List<String> tags;
+
+    @Singular
     private List<VoteModel> votes;
 }

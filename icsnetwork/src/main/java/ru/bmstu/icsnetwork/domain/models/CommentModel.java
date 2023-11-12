@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 public class CommentModel {
     private long id;
     private String content;
+    private PostModel post;
     private UserModel author;
 }

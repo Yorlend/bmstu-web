@@ -10,6 +10,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Builder
 public class VoteModel {
+    private Long id;
+
     private UserModel user;
+
+    private PostModel post;
+
     private boolean vote;
 }

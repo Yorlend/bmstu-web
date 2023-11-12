@@ -35,6 +35,15 @@ public class UserPrincipal implements UserDetails {
                 .build();
     }
 
+    public UserModel toUserModel() {
+        return UserModel.builder()
+                .id(id)
+                .login(login)
+                .name(name)
+                .password(password)
+                .build();
+    }
+
     @Override
     public String getUsername() {
         return login;

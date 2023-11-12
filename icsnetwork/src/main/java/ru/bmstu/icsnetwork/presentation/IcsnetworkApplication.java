@@ -24,7 +24,7 @@ public class IcsnetworkApplication {
     @Bean
     public ApplicationRunner applicationRunner(IUserRepository userRepository) {
         return env -> {
-            userRepository.save(
+            userRepository.persist(
                 UserModel.builder()
                     .id(1)
                     .login("admin")

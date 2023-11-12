@@ -20,3 +20,7 @@ app:
   security:
     jwtSecret: $2a$12$J2hAgn1KnzCJ0xBTWftWke.dmQCHiL4HNjMgnMqXJ/hPVu33Y7MRy
     jwtExpirationInMs: 604800000
+
+logging:
+  level:
+    org.springframework.security: TRACE

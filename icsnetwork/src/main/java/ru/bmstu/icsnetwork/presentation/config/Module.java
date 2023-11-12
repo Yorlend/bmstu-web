@@ -3,7 +3,10 @@ package ru.bmstu.icsnetwork.presentation.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import ru.bmstu.icsnetwork.domain.repositories.IPostRepository;
 import ru.bmstu.icsnetwork.domain.repositories.IUserRepository;
+import ru.bmstu.icsnetwork.domain.usecases.post.AddPostUseCase;
 import ru.bmstu.icsnetwork.domain.usecases.user.AddUserUseCase;
 import ru.bmstu.icsnetwork.presentation.controllers.user.AddUserInputMapper;
 
@@ -18,5 +21,10 @@ public class Module {
     @Bean
     public AddUserInputMapper addUserInputMapper(PasswordEncoder passwordEncoder) {
         return new AddUserInputMapper(passwordEncoder);
+    }
+
+    @Bean
+    public AddPostUseCase addPostUseCase(IPostRepository postRepository) {
+        return new AddPostUseCase(postRepository);
     }
 }

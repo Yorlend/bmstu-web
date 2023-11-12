@@ -1,25 +1,29 @@
 package ru.bmstu.icsnetwork.presentation.config;
 
+import jakarta.servlet.DispatcherType;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.BeanIds;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.HeadersConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import ru.bmstu.icsnetwork.presentation.security.IcsUserDetailsService;
-import ru.bmstu.icsnetwork.presentation.security.JwtAuthEntrypoint;
-import ru.bmstu.icsnetwork.presentation.security.JwtAuthFilter;
-import ru.bmstu.icsnetwork.presentation.security.JwtProvider;
+import ru.bmstu.icsnetwork.presentation.security.*;
 
 @EnableWebSecurity
 @Configuration
@@ -35,9 +39,22 @@ public class Security {
     @Autowired
     private JwtProvider jwtProvider;
     
-    @Bean
+    @Bean(BeanIds.AUTHENTICATION_MANAGER)
     public AuthenticationManager authenticationManager(AuthenticationConfiguration config) throws Exception {
         return config.getAuthenticationManager();
+    }
+
+    @Bean
+    public AuthenticationProvider authenticationProvider(PasswordEncoder passwordEncoder) {
+        val authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userDetailsService);
+        authProvider.setPasswordEncoder(passwordEncoder);
+        return authProvider;
+    }
+
+    @Bean
+    public AuthenticateUserUseCase authenticateUserUseCase(AuthenticationManager authenticationManager, JwtProvider jwtProvider) {
+        return new AuthenticateUserUseCase(authenticationManager, jwtProvider);
     }
 
     @Bean
@@ -45,23 +62,19 @@ public class Security {
         return new JwtAuthFilter(jwtProvider, userDetailsService);
     }
 
-    // TODO: rewrite to Spring 6?
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth
-            .userDetailsService(userDetailsService)
-            .passwordEncoder(passwordEncoder());
-    }
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         return http
-            .addFilterBefore(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class)
-            .csrf(csrf -> csrf.disable())
+            .addFilterAfter(jwtAuthFilter(), UsernamePasswordAuthenticationFilter.class)
+            .csrf(AbstractHttpConfigurer::disable)
+            .logout(AbstractHttpConfigurer::disable)
             .exceptionHandling(exception -> exception.authenticationEntryPoint(unauthorizedHandler))
-            .headers(headers -> headers.frameOptions(frameOps -> frameOps.sameOrigin()))
+            .headers(headers -> headers.frameOptions(HeadersConfigurer.FrameOptionsConfig::sameOrigin))
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers(HttpMethod.POST).authenticated()
+                .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
+                .requestMatchers(HttpMethod.POST, "/posts").access(new AuthManager())
                 .anyRequest().permitAll()
             )
             .build();
