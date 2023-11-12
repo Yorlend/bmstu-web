@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 // import org.springframework.data.jpa.repository.Query;
 
+import org.springframework.data.jpa.repository.Query;
 import ru.bmstu.icsnetwork.data.entities.CommentEntity;
 
 public interface JpaCommentRepository extends JpaRepository<CommentEntity, Long>{

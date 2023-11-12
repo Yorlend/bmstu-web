@@ -53,5 +53,10 @@ public class PostRepository implements IPostRepository {
         );
         return CommentMapper.commentModelFromEntity(inserted);
     }
-    
+
+    @Override
+    public void updateTitleAndContent(Long id, String title, String content) {
+        jpaPostRepository.updateTitleAndContent(id, title, content);
+    }
+
 }

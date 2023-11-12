@@ -16,4 +16,6 @@ public interface IPostRepository {
     List<CommentModel> findCommentsByPostId(Long id);
 
     CommentModel persistComment(CommentModel commentModel);
+
+    void updateTitleAndContent(Long id, String title, String content);
 }

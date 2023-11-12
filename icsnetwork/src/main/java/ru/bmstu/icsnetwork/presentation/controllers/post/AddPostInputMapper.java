@@ -9,7 +9,7 @@ public class AddPostInputMapper {
     public static AddPostUseCase.Input map(PostApiRequest request, UserPrincipal user) {
         return new AddPostUseCase.Input(
                 request.getTitle(),
-                request.getText(),
+                request.getContent(),
                 user.toUserModel()
         );
     }

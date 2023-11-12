@@ -3,7 +3,7 @@ package ru.bmstu.icsnetwork.presentation.requests;
 import lombok.Value;
 
 @Value
-public class PostApiRequest {
+public class PatchPostApiRequest {
     String title;
     String content;
 }
