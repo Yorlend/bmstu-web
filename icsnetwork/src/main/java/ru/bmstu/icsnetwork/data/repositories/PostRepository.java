@@ -59,4 +59,13 @@ public class PostRepository implements IPostRepository {
         jpaPostRepository.updateTitleAndContent(id, title, content);
     }
 
+    @Override
+    public CommentModel findCommentById(Long commentId) {
+        return jpaCommentRepository.findById(commentId).map(CommentMapper::commentModelFromEntity).orElse(null);
+    }
+
+    @Override
+    public void deleteComment(Long commentId) {
+        jpaCommentRepository.deleteById(commentId);
+    }
 }

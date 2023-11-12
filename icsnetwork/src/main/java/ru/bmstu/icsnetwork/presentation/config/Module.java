@@ -52,4 +52,9 @@ public class Module {
     public GetAllCommentsUseCase getAllCommentsUseCase(IPostRepository postRepository) {
         return new GetAllCommentsUseCase(postRepository);
     }
+
+    @Bean
+    public DeleteCommentUseCase deleteCommentUseCase(IPostRepository postRepository) {
+        return new DeleteCommentUseCase(postRepository);
+    }
 }

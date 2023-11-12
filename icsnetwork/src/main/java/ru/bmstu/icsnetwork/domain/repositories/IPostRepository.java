@@ -18,4 +18,8 @@ public interface IPostRepository {
     CommentModel persistComment(CommentModel commentModel);
 
     void updateTitleAndContent(Long id, String title, String content);
+
+    CommentModel findCommentById(Long commentId);
+
+    void deleteComment(Long commentId);
 }

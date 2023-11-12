@@ -29,6 +29,7 @@ public class PostController implements PostResource {
     private PatchPostUseCase patchPostUseCase;
     private AddCommentUseCase addCommentUseCase;
     private GetAllCommentsUseCase getAllCommentsUseCase;
+    private DeleteCommentUseCase deleteCommentUseCase;
 
     public PostController(
         AddPostUseCase addPostUseCase,
@@ -37,7 +38,8 @@ public class PostController implements PostResource {
         GetPostUseCase getPostUseCase,
         PatchPostUseCase patchPostUseCase,
         AddCommentUseCase addCommentUseCase,
-        GetAllCommentsUseCase getAllCommentsUseCase) {
+        GetAllCommentsUseCase getAllCommentsUseCase,
+        DeleteCommentUseCase deleteCommentUseCase) {
         this.addPostUseCase = addPostUseCase;
         this.useCaseExecutor = useCaseExecutor;
         this.getAllPostsUseCase = getAllPostsUseCase;
@@ -45,6 +47,7 @@ public class PostController implements PostResource {
         this.patchPostUseCase = patchPostUseCase;
         this.addCommentUseCase = addCommentUseCase;
         this.getAllCommentsUseCase = getAllCommentsUseCase;
+        this.deleteCommentUseCase = deleteCommentUseCase;
     }
 
     @Override
@@ -101,6 +104,15 @@ public class PostController implements PostResource {
                 getAllCommentsUseCase,
                 new GetAllCommentsUseCase.Input(postId),
                 (output -> GetAllCommentsApiResponse.from(output.getComments()))
+        );
+    }
+
+    @Override
+    public CompletableFuture<ResponseEntity<Void>> deleteComment(UserPrincipal user, long commentId) {
+        return useCaseExecutor.execute(
+                deleteCommentUseCase,
+                new DeleteCommentUseCase.Input(user.getId(), commentId),
+                (output) -> ResponseEntity.noContent().build()
         );
     }
 }

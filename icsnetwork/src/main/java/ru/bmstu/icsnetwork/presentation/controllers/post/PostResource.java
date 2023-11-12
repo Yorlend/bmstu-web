@@ -49,4 +49,10 @@ public interface PostResource {
     CompletableFuture<GetAllCommentsApiResponse> getAllComments(
         @PathVariable("id") long postId
     );
+
+    @DeleteMapping("/{id}/comments/{commentId}")
+    CompletableFuture<ResponseEntity<Void>> deleteComment(
+        @CurrentUser UserPrincipal user,
+        @PathVariable("commentId") long commentId
+    );
 }
