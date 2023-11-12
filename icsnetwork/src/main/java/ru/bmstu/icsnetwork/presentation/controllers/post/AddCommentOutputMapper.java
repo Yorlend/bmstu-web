@@ -14,7 +14,7 @@ public class AddCommentOutputMapper {
             CommentApiResponse.builder()
                 .id(comment.getId())
                 .content(comment.getContent())
-                .post(PostApiResponse.from(comment.getPost()))
+                .post_id(comment.getPost().getId())
                 .author(UserApiResponse.from(comment.getAuthor()))
                 .build(),
             HttpStatus.CREATED

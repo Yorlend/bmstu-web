@@ -9,14 +9,14 @@ import ru.bmstu.icsnetwork.domain.models.CommentModel;
 public class CommentApiResponse {
     long id;
     String content;
-    PostApiResponse post;
+    long post_id;
     UserApiResponse author;
 
     public static CommentApiResponse from(CommentModel comment) {
         return new CommentApiResponse(
             comment.getId(),
             comment.getContent(),
-            PostApiResponse.from(comment.getPost()),
+            comment.getPost().getId(),
             UserApiResponse.from(comment.getAuthor())
         );
     }
