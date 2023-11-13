@@ -73,7 +73,7 @@ public class Security {
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .dispatcherTypeMatchers(DispatcherType.ERROR).permitAll()
-                .requestMatchers(HttpMethod.POST, "/posts").access(new AuthManager())
+                .requestMatchers(HttpMethod.POST, "/posts", "/comments").access(new AuthManager())
                 .anyRequest().permitAll()
             )
             .build();

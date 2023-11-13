@@ -36,7 +36,7 @@ public class UserRepository implements IUserRepository {
 
     @Override
     public Optional<UserModel> findByLogin(String login) {
-        final UserEntity user = jpaUserRepository.findByLogin(login).orElseThrow();
-        return Optional.of(UserMapper.userModelFromEntity(user));
+        final Optional<UserEntity> user = jpaUserRepository.findByLogin(login);
+        return user.map(UserMapper::userModelFromEntity);
     }
 }

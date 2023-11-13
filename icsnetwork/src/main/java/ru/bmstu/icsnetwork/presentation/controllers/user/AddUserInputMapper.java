@@ -13,8 +13,8 @@ public class AddUserInputMapper {
 
     public AddUserUseCase.Input map(SignUpRequest request) {
         return new AddUserUseCase.Input(
-                request.getName(),
                 request.getLogin(),
+                request.getName(),
                 passwordEncoder.encode(request.getPassword())
         );
     }

@@ -18,17 +18,17 @@ public class AddUserUseCase extends UseCase<AddUserUseCase.Input, AddUserUseCase
             throw new IllegalArgumentException("Login already exists");
         }
         return new Output(userRepository.persist(UserModel.builder()
-                .login(input.login)
-                .name(input.name)
-                .username(input.username)
-                .build()));
+            .login(input.login)
+            .name(input.name)
+            .password(input.password)
+            .build()));
     }
 
     @Value
     public static class Input implements UseCase.Input {
         String login;
         String name;
-        String username;
+        String password;
     }
 
     @Value

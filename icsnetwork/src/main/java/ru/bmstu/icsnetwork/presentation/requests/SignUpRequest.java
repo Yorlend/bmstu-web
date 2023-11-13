@@ -8,7 +8,7 @@ import ru.bmstu.icsnetwork.domain.usecases.user.AddUserUseCase;
 @Value
 public class SignUpRequest {
     @NotBlank
-    @Size(min = 4, max = 40)
+    @Size(min = 2, max = 40)
     String name;
 
     @NotBlank
@@ -16,13 +16,13 @@ public class SignUpRequest {
     String login;
 
     @NotBlank
-    @Size(min = 6, max = 50)
+    @Size(min = 4, max = 50)
     String password;
 
     public static AddUserUseCase.Input from(SignUpRequest request) {
         return new AddUserUseCase.Input(
-                request.name,
                 request.login,
+                request.name,
                 request.password
         );
     }

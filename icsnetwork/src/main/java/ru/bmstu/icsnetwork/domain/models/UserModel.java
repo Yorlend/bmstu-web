@@ -16,7 +16,6 @@ public class UserModel {
     private long id;
     private String login;
     private String name;
-    private String username;
     private String password;
 
     @Singular

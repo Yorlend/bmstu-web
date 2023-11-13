@@ -8,6 +8,8 @@ import ru.bmstu.icsnetwork.domain.repositories.IPostRepository;
 import ru.bmstu.icsnetwork.domain.repositories.IUserRepository;
 import ru.bmstu.icsnetwork.domain.usecases.post.*;
 import ru.bmstu.icsnetwork.domain.usecases.user.AddUserUseCase;
+import ru.bmstu.icsnetwork.domain.usecases.user.GetAllUsersUseCase;
+import ru.bmstu.icsnetwork.domain.usecases.user.GetUserUseCase;
 import ru.bmstu.icsnetwork.presentation.controllers.user.AddUserInputMapper;
 
 @Configuration
@@ -56,5 +58,15 @@ public class Module {
     @Bean
     public DeleteCommentUseCase deleteCommentUseCase(IPostRepository postRepository) {
         return new DeleteCommentUseCase(postRepository);
+    }
+
+    @Bean
+    public GetAllUsersUseCase getAllUsersUseCase(IUserRepository userRepository) {
+        return new GetAllUsersUseCase(userRepository);
+    }
+
+    @Bean
+    public GetUserUseCase getUserUseCase(IUserRepository userRepository) {
+        return new GetUserUseCase(userRepository);
     }
 }

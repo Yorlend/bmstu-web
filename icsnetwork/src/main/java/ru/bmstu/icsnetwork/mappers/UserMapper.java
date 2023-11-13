@@ -10,7 +10,6 @@ public class UserMapper {
                 .id(userModel.getId())
                 .login(userModel.getLogin())
                 .name(userModel.getName())
-                .username(userModel.getUsername())
                 .password(userModel.getPassword())
                 .build();
 
@@ -26,7 +25,6 @@ public class UserMapper {
                 .id(userEntity.getId())
                 .login(userEntity.getLogin())
                 .name(userEntity.getName())
-                .username(userEntity.getUsername())
                 .password(userEntity.getPassword())
                 .build();
 
