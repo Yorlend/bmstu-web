@@ -70,24 +70,6 @@ paths:
           description: Forbidden
         404:
           description: Not Found
-    delete:
-      summary: удалить пользователя по id
-      tags:
-        - users
-      parameters:
-        - in: path
-          name: id
-          schema:
-            type: integer
-          required: true
-          description: id пользователя
-      responses:
-        204:
-          description: No Content
-        401:
-          description: Unauthorized
-        403:
-          description: Forbidden
   /api/v1/posts:
     get:
       summary: список постов
@@ -180,6 +162,22 @@ paths:
           description: Unauthorized
         403:
           description: Forbidden
+    delete:
+      summary: удалить пост по id
+      tags:
+        - posts
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: id поста
+      responses:
+        204:
+          description: No Content
+        401:
+          description: Unauthorized
   /api/v1/posts/{id}/comments:
     get:
       summary: список комментариев
