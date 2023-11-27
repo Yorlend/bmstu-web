@@ -16,10 +16,11 @@ public class DeleteCommentUseCase extends UseCase<DeleteCommentUseCase.Input, De
     @Override
     public Output execute(Input input) {
         val comment = postRepository.findCommentById(input.commentId);
-        if (comment.getAuthor().getId() == input.userId) {
+        if (comment != null && comment.getAuthor().getId() == input.userId) {
             postRepository.deleteComment(input.commentId);
         }
-        // TODO: THROW EXCEPTION
+//        postRepository.deleteComment(input.commentId);
+        
         return new Output();
     }
 
