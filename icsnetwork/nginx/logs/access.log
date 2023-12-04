@@ -1,0 +1,15 @@
+[04/Dec/2023:21:39:55 +0000] 172.21.0.1 - backend -  localhost to: 172.21.0.5:8080: GET /mirror/api/v1/users HTTP/1.1 404 upstream_response_time 0.005 msec 1701725995.021 request_time 0.006
+[04/Dec/2023:21:44:48 +0000] 172.21.0.1 - backend -  localhost to: 172.21.0.5:8080: GET /mirror/api/v1/users HTTP/1.1 200 upstream_response_time 0.121 msec 1701726288.545 request_time 0.121
+[04/Dec/2023:21:45:35 +0000] 172.21.0.1 - backend -  localhost to: 172.21.0.5:8080: GET /mirror/api/v1/users HTTP/1.1 200 upstream_response_time 0.009 msec 1701726335.228 request_time 0.009
+[04/Dec/2023:21:46:57 +0000] 172.21.0.1 - backend -  localhost to: 172.21.0.5:8080: GET /mirror/api/v1/users HTTP/1.1 200 upstream_response_time 0.010 msec 1701726417.063 request_time 0.010
+[04/Dec/2023:21:50:40 +0000] 172.21.0.1 - backend -  localhost to: 172.21.0.5:8080: GET /mirror/api/v1/ HTTP/1.1 404 upstream_response_time 0.078 msec 1701726640.204 request_time 0.078
+[04/Dec/2023:21:50:46 +0000] 172.21.0.1 - backend -  localhost to: 172.21.0.5:8080: GET /mirror/api/v1 HTTP/1.1 302 upstream_response_time 0.003 msec 1701726646.417 request_time 0.003
+[04/Dec/2023:21:51:14 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 200 upstream_response_time - msec 1701726674.754 request_time 0.000
+[04/Dec/2023:21:51:14 +0000] 172.21.0.1 - backend -  localhost to: -: GET /styles.css HTTP/1.1 200 upstream_response_time - msec 1701726674.778 request_time 0.000
+[04/Dec/2023:21:51:14 +0000] 172.21.0.1 - backend -  localhost to: -: GET /img/wireframes.svg HTTP/1.1 200 upstream_response_time - msec 1701726674.781 request_time 0.001
+[04/Dec/2023:21:51:35 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 304 upstream_response_time - msec 1701726695.016 request_time 0.000
+[04/Dec/2023:21:53:26 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 304 upstream_response_time - msec 1701726806.114 request_time 0.000
+[04/Dec/2023:21:53:54 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 304 upstream_response_time - msec 1701726834.247 request_time 0.000
+[04/Dec/2023:21:54:06 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 304 upstream_response_time - msec 1701726846.015 request_time 0.000
+[04/Dec/2023:21:54:12 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 304 upstream_response_time - msec 1701726852.404 request_time 0.000
+[04/Dec/2023:21:54:13 +0000] 172.21.0.1 - backend -  localhost to: -: GET / HTTP/1.1 304 upstream_response_time - msec 1701726853.296 request_time 0.000

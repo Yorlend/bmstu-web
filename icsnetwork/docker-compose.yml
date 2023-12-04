@@ -1,14 +1,22 @@
 version: '3.10'
 services:
-  app:
-    container_name: app_container
+  app: &app-template
+    container_name: main_backend
     image: openjdk:17
     ports:
-      - "${APP_PORT:-9090}:8080"
+      - "${APP_PORT:-8081}:8080"
     volumes:
       - ./target:/app
     command: ["java", "-jar", "/app/icsnetwork-0.0.1-SNAPSHOT.jar"]
     restart: unless-stopped
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_USERNAME: postgres
+      POSTGRES_PASSWORD: password
+    depends_on:
+      postgres:
+        condition: service_healthy
     healthcheck:
       test: curl --fail http://localhost:8080/api/v1/health || exit 1
       interval: 5s
@@ -16,18 +24,72 @@ services:
       start_period: 5s
       timeout: 60s
 
+  app2:
+    <<: *app-template
+    container_name: aux1_backend
+    ports:
+      - "8082:8080"
+    depends_on:
+      - app
+
+  app3:
+    <<: *app-template
+    container_name: aux2_backend
+    ports:
+      - "8083:8080"
+    depends_on:
+      - app2
+  
+  mirror:
+    <<: *app-template
+    container_name: mirror
+    ports:
+      - "8084:8080"
+    environment:
+      POSTGRES_HOST: pg-replica
+      POSTGRES_DB: replicator
+      POSTGRES_USERNAME: replicator
+      POSTGRES_PASSWORD: replicator
+    depends_on:
+      pg-replica:
+        condition: service_healthy
+
   postgres:
     container_name: postgres_container
-    image: postgres
+    image: postgres:16
+    user: postgres
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-password}
-      PGDATA: /data/postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
     volumes:
-      - postgres:/data/postgres
-    ports:
-      - "5432:5432"
+      - ./db/schema:/docker-entrypoint-initdb.d:ro
+      - postgres:/var/lib/postgresql/data
     restart: unless-stopped
+    healthcheck:
+      test: "pg_isready -U postgres -d postgres"
+      interval: 3s
+      timeout: 20s
+      retries: 5
+
+  pg-replica:
+    container_name: pg-replica_container
+    image: postgres:16
+    user: postgres
+    environment:
+      POSTGRES_USER: replicator
+      POSTGRES_PASSWORD: replicator
+    volumes:
+      - ./db/replica-schema:/docker-entrypoint-initdb.d:ro
+      - pg-replica:/var/lib/postgresql/data
+    restart: unless-stopped
+    healthcheck:
+      test: "pg_isready -U replicator -d postgres"
+      interval: 3s
+      timeout: 20s
+      retries: 5
+    depends_on:
+      postgres:
+        condition: service_healthy
 
   pgadmin:
     container_name: pgadmin_container
@@ -38,24 +100,31 @@ services:
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     volumes:
       - pgadmin:/var/lib/pgadmin
-
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     restart: unless-stopped
 
   nginx:
     container_name: nginx
-    image: nginx:alpine
+    image: byjg/nginx-extras
     ports:
       - "${NGINX_PORT:-8080}:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/static:/var/www/static:ro
+      - ./nginx/logs:/var/log/nginx
     restart: unless-stopped
     depends_on:
       app:
         condition: service_healthy
+      app2:
+        condition: service_healthy
+      app3:
+        condition: service_healthy
+      mirror:
+        condition: service_healthy
 
 volumes:
   postgres:
+  pg-replica:
   pgadmin:

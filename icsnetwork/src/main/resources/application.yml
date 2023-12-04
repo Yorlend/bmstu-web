@@ -3,28 +3,16 @@ server:
   servlet:
     context-path: /api/v1
 
-# springfox:
-#   documentation:
-#     swagger-ui:
-#       base-url: /api/v1
-#     swagger:
-#       v2:
-#         path: /api/v1
-#   api-docs:
-#     enabled: 
-#       true
-  
-
 spring:
   datasource:
-    url: jdbc:postgresql://postgres:5432/postgres
-    username: postgres
-    password: password
+    url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
   security:
     user:
       name: admin
@@ -34,7 +22,3 @@ app:
   security:
     jwtSecret: $2a$12$J2hAgn1KnzCJ0xBTWftWke.dmQCHiL4HNjMgnMqXJ/hPVu33Y7MRy
     jwtExpirationInMs: 604800000
-
-# logging:
-#   level:
-#     org.springframework.security: TRACE

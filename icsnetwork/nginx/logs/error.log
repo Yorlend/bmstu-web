@@ -1,0 +1,5 @@
+2023/12/04 21:38:33 [error] 7#7: *1 open() "/var/www/static/favicon.ico" failed (2: No such file or directory), client: 172.21.0.1, server: , request: "GET /favicon.ico HTTP/1.1", host: "localhost:8080", referrer: "http://localhost:8080/mirror"
+2023/12/04 21:46:48 [notice] 7#7: signal process started
+2023/12/04 21:50:35 [notice] 13#13: signal process started
+2023/12/04 21:53:20 [notice] 21#21: signal process started
+2023/12/04 21:53:51 [notice] 28#28: signal process started
