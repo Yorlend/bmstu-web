@@ -24,14 +24,18 @@ public class IcsnetworkApplication {
     @Bean
     public ApplicationRunner applicationRunner(IUserRepository userRepository) {
         return env -> {
-            userRepository.persist(
-                UserModel.builder()
-                    .id(1)
-                    .login("admin")
-                    .name("Admin")
-                    .password(pe.encode("admin"))
-                    .build()
-            );
+            try {
+                userRepository.persist(
+                    UserModel.builder()
+                        .id(1)
+                        .login("admin")
+                        .name("Admin")
+                        .password(pe.encode("admin"))
+                        .build()
+                );
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+            }
         };
     }
 }

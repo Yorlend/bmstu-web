@@ -4,10 +4,10 @@ server:
     context-path: /api/v1
 
 spring:
-  datasource:
-    url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
-    username: ${POSTGRES_USERNAME}
-    password: ${POSTGRES_PASSWORD}
+  # datasource:
+  #   url: jdbc:postgresql://${POSTGRES_HOST}:5432/${POSTGRES_DB}
+  #   username: ${POSTGRES_USERNAME}
+  #   password: ${POSTGRES_PASSWORD}
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
