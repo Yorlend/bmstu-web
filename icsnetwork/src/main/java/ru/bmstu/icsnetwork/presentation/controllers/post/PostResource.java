@@ -16,6 +16,7 @@ import ru.bmstu.icsnetwork.presentation.responses.PostApiResponse;
 import ru.bmstu.icsnetwork.presentation.security.CurrentUser;
 import ru.bmstu.icsnetwork.presentation.security.UserPrincipal;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/posts")
 public interface PostResource {

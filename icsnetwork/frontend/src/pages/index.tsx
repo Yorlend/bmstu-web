@@ -1,3 +1,5 @@
+import AuthProvider from "@/auth/context"
+import Authpage from "@/routes/auth"
 import { Homepage } from "@/routes/home"
 import Postpage from "@/routes/post"
 import { Metadata } from "next"
@@ -17,12 +19,15 @@ export default function App() {
     <SWRConfig value={{
       fetcher: (resource, init = null) => fetch(resource, init).then(res => res.json()),
     }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Homepage />} />
-          <Route path="/posts/:id" element={<Postpage />} />
-        </Routes>
-      </BrowserRouter>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/login" element={<Authpage />} />
+            <Route path="/posts/:id" element={<Postpage />} />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
     </SWRConfig>
   )
 }

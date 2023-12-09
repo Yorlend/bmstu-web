@@ -31,7 +31,7 @@ export function usePost(postId: number) {
   const { data: postInfo, error: postInfoError, isLoading: postInfoLoading } =
     useSWR(`http://localhost:8080/api/v1/posts/${postId}`)
 
-  const { data: comments, error: commentsError, isLoading: commentsLoading } =
+  const { data: comments, error: commentsError, isLoading: commentsLoading, mutate } =
     useSWR(`http://localhost:8080/api/v1/posts/${postId}/comments`)
 
   let data: Post | null = null
@@ -60,5 +60,8 @@ export function usePost(postId: number) {
     data,
     error: postInfoError || commentsError,
     isLoading: postInfoLoading || commentsLoading,
+    triggerReload: () => {
+      mutate()
+    }
   }
 }

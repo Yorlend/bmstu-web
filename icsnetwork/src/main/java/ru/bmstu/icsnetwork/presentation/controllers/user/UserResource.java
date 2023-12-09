@@ -14,6 +14,7 @@ import ru.bmstu.icsnetwork.presentation.responses.UserApiResponse;
 
 import java.util.concurrent.CompletableFuture;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/users")
 public interface UserResource {

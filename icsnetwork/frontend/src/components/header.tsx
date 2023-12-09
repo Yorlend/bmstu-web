@@ -3,8 +3,15 @@ import React from "react"
 import EnotImage from '@/images/enot.png'
 import StudentImage from '@/images/student.svg'
 import { Link } from "react-router-dom"
+import { useAuth } from "@/auth/context"
 
 export default function Header(): React.ReactElement {
+  const { auth, setAuth } = useAuth()
+
+  function logout() {
+    setAuth(null)
+  }
+
   return (
     <header>
       <Image className="w-screen h-[400px]" alt="Header bg" src={EnotImage} />
@@ -23,9 +30,15 @@ export default function Header(): React.ReactElement {
           Главная
         </Link>
         <div className="ml-3 px-5 py-3 bg-secondarya">
-          <div className="font-menu font-[number:var(--menu-font-weight)] text-variable-collection-menu-font text-[length:var(--menu-font-size)] tracking-[var(--menu-letter-spacing)] leading-[var(--menu-line-height)] whitespace-nowrap [font-style:var(--menu-font-style)]">
+          {!auth ?
+          <Link to="/login" className="font-menu font-[number:var(--menu-font-weight)] text-variable-collection-menu-font text-[length:var(--menu-font-size)] tracking-[var(--menu-letter-spacing)] leading-[var(--menu-line-height)] whitespace-nowrap [font-style:var(--menu-font-style)]">
             Войти
-          </div>
+          </Link>
+          :
+          <button onClick={logout} className="font-menu font-[number:var(--menu-font-weight)] text-variable-collection-menu-font text-[length:var(--menu-font-size)] tracking-[var(--menu-letter-spacing)] leading-[var(--menu-line-height)] whitespace-nowrap [font-style:var(--menu-font-style)]">
+            Выйти
+          </button>
+          }
         </div>
       </div>
     </header>
