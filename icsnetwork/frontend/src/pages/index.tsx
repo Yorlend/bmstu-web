@@ -3,6 +3,7 @@ import Postpage from "@/routes/post"
 import { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { BrowserRouter, HashRouter, Link, Route, Routes } from "react-router-dom"
+import { SWRConfig } from "swr"
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -13,11 +14,15 @@ export const metadata: Metadata = {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/posts/:id" element={<Postpage />} />
-      </Routes>
-    </BrowserRouter>
+    <SWRConfig value={{
+      fetcher: (resource, init = null) => fetch(resource, init).then(res => res.json()),
+    }}>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/posts/:id" element={<Postpage />} />
+        </Routes>
+      </BrowserRouter>
+    </SWRConfig>
   )
 }

@@ -1,5 +1,5 @@
 import { useRef } from "react"
-import { postComment } from "@/services/comment-service"
+import { postComment } from "@/lib/comment"
 
 interface Props {
   postId: number

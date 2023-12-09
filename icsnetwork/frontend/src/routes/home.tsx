@@ -1,13 +1,9 @@
 import { Post } from "@/components/post"
-import { getPosts } from "@/services/post-service"
+import { usePosts } from "@/lib/post"
 import RootLayout from "@/routes/layout"
-import { useEffect, useState } from "react"
-import { Post as PostModel } from "@/domain/post"
 
 export function Homepage() {
-  const [posts, setPosts] = useState<PostModel[]>([])
-
-  useEffect(() => void getPosts().then(setPosts), [])
+  const { data: posts, error, isLoading } = usePosts()
 
   return (
     <RootLayout>
@@ -18,7 +14,9 @@ export function Homepage() {
       </div>
 
       <div className="mt-10 flex flex-col items-center justify-center">
-        {posts.map((post) => <Post key={post.id} post={post} linkEnabled={true} />)}
+        {isLoading ? <p>Loading...</p> :
+          error ? <p>Error: {error}</p> :
+            posts!.map((post) => <Post key={post.id} post={post} linkEnabled={true} />)}
       </div>
     </RootLayout>
   )
