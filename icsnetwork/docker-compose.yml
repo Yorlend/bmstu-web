@@ -30,7 +30,7 @@ services:
     command: >
       java -jar /app/icsnetwork-0.0.1-SNAPSHOT.jar --debug
         --spring.datasource.url=jdbc:postgresql://postgres:5432/postgres
-        --spring.datasource.username=reader
+        --spring.datasource.username=postgres
         --spring.datasource.password=password
         --spring.datasource.driver-class-name=org.postgresql.Driver
     ports:
@@ -44,7 +44,7 @@ services:
     command: >
       java -jar /app/icsnetwork-0.0.1-SNAPSHOT.jar --debug
         --spring.datasource.url=jdbc:postgresql://postgres:5432/postgres
-        --spring.datasource.username=reader
+        --spring.datasource.username=postgres
         --spring.datasource.password=password
         --spring.datasource.driver-class-name=org.postgresql.Driver
     ports:
@@ -92,7 +92,7 @@ services:
       POSTGRES_USER: replicator
       POSTGRES_PASSWORD: replicator
     volumes:
-      - ./db/replica-schema:/docker-entrypoint-initdb.d:ro
+      - ./db/schema:/docker-entrypoint-initdb.d:ro
       - pg-replica:/var/lib/postgresql/data
     restart: unless-stopped
     healthcheck:
