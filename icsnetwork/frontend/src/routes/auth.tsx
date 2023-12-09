@@ -6,7 +6,7 @@ import { useLayoutEffect, useRef } from "react"
 import { authenticate, useAuth } from "@/auth/context"
 import { useNavigate } from "react-router-dom"
 
-export default function Authpage(): React.ReactElement {
+export default function AuthPage(): React.ReactElement {
   const navigation = useNavigate()
   const loginRef = useRef<HTMLInputElement>(null)
   const passwordRef = useRef<HTMLInputElement>(null)

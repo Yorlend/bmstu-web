@@ -67,3 +67,6 @@
 2023/12/06 10:09:44 [error] 7#7: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
 2023/12/06 10:09:49 [error] 7#7: send() failed (111: Connection refused) while resolving, resolver: 127.0.0.1:53
 2023/12/06 10:09:54 [error] 7#7: *2 app could not be resolved (110: Operation timed out), client: 172.20.0.1, server: , request: "POST /api/v1/posts HTTP/1.1", host: "localhost:8080"
+2023/12/09 17:49:46 [error] 7#7: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET /api/v1/posts HTTP/1.1", upstream: "http://172.21.0.4:8080/api/v1/posts", host: "localhost:8080", referrer: "http://localhost:3000/"
+2023/12/09 17:49:46 [error] 7#7: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET /api/v1/posts HTTP/1.1", upstream: "http://172.21.0.6:8080/api/v1/posts", host: "localhost:8080", referrer: "http://localhost:3000/"
+2023/12/09 17:49:46 [error] 7#7: *8 connect() failed (111: Connection refused) while connecting to upstream, client: 172.21.0.1, server: , request: "GET /api/v1/posts HTTP/1.1", upstream: "http://172.21.0.7:8080/api/v1/posts", host: "localhost:8080", referrer: "http://localhost:3000/"

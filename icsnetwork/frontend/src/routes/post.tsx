@@ -9,7 +9,7 @@ import { Comment as CommentModel } from '@/domain/comment'
 import { deleteComment } from "@/lib/comment"
 
 
-export default function Postpage(): React.ReactElement {
+export default function PostPage(): React.ReactElement {
   const { id: postId } = useParams() as { id: string }
   const { data: post, error, isLoading, triggerReload } = usePost(parseInt(postId))
 

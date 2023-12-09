@@ -37,16 +37,6 @@ export function usePost(postId: number) {
   let data: Post | null = null
 
   if (postInfo && comments) {
-    // mock single comment
-    // comments.comments.push({
-    //   id: 1,
-    //   content: "Комментарий",
-    //   author: {
-    //     name: "Аноним1",
-    //     id: 1
-    //   }
-    // })
-
     data = {
       id: postInfo.id,
       title: postInfo.title,
@@ -64,4 +54,20 @@ export function usePost(postId: number) {
       mutate()
     }
   }
+}
+
+export async function uploadPost(title: string, content: string, token: string): Promise<Post> {
+  const response = await fetch(`http://localhost:8080/api/v1/posts`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      title: title,
+      content: content,
+    }),
+  })
+  const data = await response.json()
+  return data
 }

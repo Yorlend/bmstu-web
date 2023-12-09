@@ -1,7 +1,8 @@
 import AuthProvider from "@/auth/context"
-import Authpage from "@/routes/auth"
+import AuthPage from "@/routes/auth"
 import { Homepage } from "@/routes/home"
-import Postpage from "@/routes/post"
+import NewPostPage from "@/routes/new-post"
+import PostPage from "@/routes/post"
 import { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { BrowserRouter, HashRouter, Link, Route, Routes } from "react-router-dom"
@@ -23,8 +24,9 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Homepage />} />
-            <Route path="/login" element={<Authpage />} />
-            <Route path="/posts/:id" element={<Postpage />} />
+            <Route path="/login" element={<AuthPage />} />
+            <Route path="/posts/:id" element={<PostPage />} />
+            <Route path="/new-post" element={<NewPostPage />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>

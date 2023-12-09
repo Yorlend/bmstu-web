@@ -16,7 +16,7 @@ export function Homepage() {
       <div className="mt-10 flex flex-col items-center justify-center">
         {isLoading ? <p>Loading...</p> :
           error ? <p>Error: {error}</p> :
-            posts!.map((post) => <Post key={post.id} post={post} linkEnabled={true} />)}
+            posts!.toReversed().map((post) => <Post key={post.id} post={post} linkEnabled={true} />)}
       </div>
     </RootLayout>
   )
