@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .all-\[unset\] {
+    all: unset;
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+  --1-font-family: "Roboto-CondensedBold", Helvetica;
+  --1-font-size: 48px;
+  --1-font-style: normal;
+  --1-font-weight: 700;
+  --1-letter-spacing: 0px;
+  --1-line-height: normal;
+  --2-font-family: "Roboto-BoldItalic", Helvetica;
+  --2-font-size: 30px;
+  --2-font-style: italic;
+  --2-font-weight: 700;
+  --2-letter-spacing: 0px;
+  --2-line-height: normal;
+  --footer: rgba(35, 0, 0, 1);
+  --headerimage: rgba(85, 131, 49, 1);
+  --menu-font-family: "Roboto-Light", Helvetica;
+  --menu-font-size: 24px;
+  --menu-font-style: normal;
+  --menu-font-weight: 300;
+  --menu-letter-spacing: 0px;
+  --menu-line-height: normal;
+  --primary: rgba(157, 173, 144, 1);
+  --primary-bg: rgb(143, 209, 89);
+  --regular-text-font-family: "Roboto-LightItalic", Helvetica;
+  --regular-text-font-size: 20px;
+  --regular-text-font-style: italic;
+  --regular-text-font-weight: 300;
+  --regular-text-letter-spacing: 0px;
+  --regular-text-line-height: normal;
+  --secondarya: rgba(126, 105, 126, 1);
+  --secondaryb: rgba(194, 171, 162, 1);
+  --variable-collection-cardbackground: rgba(255, 255, 255, 1);
+  --variable-collection-cardbg: rgba(217, 217, 217, 1);
+  --variable-collection-menu-font: rgba(177, 205, 194, 1);
+  --variable-collection-strokecolor: rgba(0, 0, 0, 1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
