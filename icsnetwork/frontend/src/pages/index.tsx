@@ -1,5 +1,6 @@
 import AuthProvider from "@/auth/context"
 import AuthPage from "@/routes/auth"
+import HealthPage from "@/routes/health"
 import { Homepage } from "@/routes/home"
 import NewPostPage from "@/routes/new-post"
 import PostPage from "@/routes/post"
@@ -27,6 +28,7 @@ export default function App() {
             <Route path="/login" element={<AuthPage />} />
             <Route path="/posts/:id" element={<PostPage />} />
             <Route path="/new-post" element={<NewPostPage />} />
+            <Route path="/manage/health" element={<HealthPage />} />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
