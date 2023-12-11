@@ -24,7 +24,9 @@ export default function PostPage(): React.ReactElement {
     <RootLayout>
       {isLoading ? <p>Loading...</p> :
         error ? <p>Error: {error}</p> :
-          <div className="mt-10 flex flex-col items-center justify-center">
+          <div className="mt-10 flex flex-col
+            mx-10 justify-center
+            lg:mx-0 lg:items-center lg:justify-center">
             <Post post={post!} />
             {auth && <CommentForm postId={post!.id!} onSubmit={(comment) => triggerReload()} />}
             {post!.comments!.toReversed().map((comment) => <Comment key={comment.id} comment={comment} onDelete={deleteCommentWrapper} />)}

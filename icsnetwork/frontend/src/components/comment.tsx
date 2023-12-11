@@ -13,8 +13,10 @@ export function Comment({ comment, onDelete }: Props): React.ReactElement {
   const { auth } = useAuth()
 
   return (
-    <div className="w-[1011px] mb-6 flex flex-row items-center justify-stretch gap-6 px-6 py-4 bg-[#d9d9d9] rounded-[30px]">
-      <Image className="w-[100px] h-[100px]" alt="Usericon" src={UserImage} />
+    <div className="mb-6 flex flex-row items-center justify-stretch gap-6 px-6 py-4 bg-[#d9d9d9] rounded-[30px]
+      w-fill
+      lg:w-[1011px]">
+      <Image className="w-[100px] h-[100px] hidden md:block" alt="Usericon" src={UserImage} />
       <div className="w-[100%] inline-flex flex-col items-start">
         <div className="w-[100%] flex flex-row items-center justify-between">
           <p className="mb-5 font-semibold [font-style:var(--regular-text-font-style)] text-black text-[length:var(--regular-text-font-size)] tracking-[var(--regular-text-letter-spacing)] leading-[var(--regular-text-line-height)]">

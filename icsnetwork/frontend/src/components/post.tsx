@@ -10,9 +10,13 @@ interface Props {
 
 export function Post({ post, linkEnabled }: Props): JSX.Element {
   return (
-    <div className="mb-10 w-[1010px] bg-[#d9d9d9] rounded-[30px] shadow-[0px_10px_50px_#00000040]">
+    <div className="mb-10 bg-[#d9d9d9] rounded-[30px] shadow-[0px_10px_50px_#00000040]
+      w-fill
+      lg:w-[1010px]">
       <div className="flex flex-row items-center justify-between p-5">
-        <div className="flex flex-row items-center gap-4">
+        <div className="flex gap-4
+          flex-col items-start
+          md:flex-row md:items-center">
           <div className="p-4 rounded-[30px] border border-solid border-variable-collection-strokecolor font-2 font-[number:var(--2-font-weight)] [font-style:var(--2-font-style)] text-black text-[length:var(--2-font-size)] tracking-[var(--2-letter-spacing)] leading-[var(--2-line-height)] whitespace-nowrap">
             {post.title}
           </div>

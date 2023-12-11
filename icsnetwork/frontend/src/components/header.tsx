@@ -14,8 +14,11 @@ export default function Header(): React.ReactElement {
 
   return (
     <header>
-      <Image className="w-screen h-[400px]" alt="Header bg" src={EnotImage} />
-      <div className="flex w-[906px] items-center justify-center absolute top-6 shadow-[0px_16px_102.6px_#63256033] left-1/2 transform -translate-x-1/2">
+      <Image className="w-screen h-fit md:h-[400px]" alt="Header bg" src={EnotImage} />
+      <div className="flex w-screen flex-col items-center justify-center absolute top-6 shadow-[0px_16px_102.6px_#63256033] left-1/2 transform -translate-x-1/2
+        gap-3
+        md:w-[90%] md:flex-row md:mx-5 md:gap-0
+        lg:w-[906px]">
         <div className="inline-flex flex-row items-center justify-center">
           <Image className="w-[50px] h-[50px]" alt="Student icon" src={StudentImage} />
           <div className="font-menu font-[number:var(--menu-font-weight)] text-variable-collection-menu-font text-[length:var(--menu-font-size)] tracking-[var(--menu-letter-spacing)] leading-[var(--menu-line-height)] [font-style:var(--menu-font-style)]">
