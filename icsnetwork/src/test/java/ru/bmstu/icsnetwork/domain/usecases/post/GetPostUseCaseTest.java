@@ -1,6 +1,5 @@
 package ru.bmstu.icsnetwork.domain.usecases.post;
 
-import com.github.javafaker.Faker;
 import lombok.val;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.MethodOrderer;
@@ -11,33 +10,35 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import ru.bmstu.icsnetwork.builders.TestPostFactory;
 import ru.bmstu.icsnetwork.builders.TestUserFactory;
-import ru.bmstu.icsnetwork.domain.models.CommentModel;
 import ru.bmstu.icsnetwork.domain.repositories.IPostRepository;
 
-import static org.mockito.Mockito.verify;
+import java.util.Optional;
+
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 @TestMethodOrder(MethodOrderer.Random.class)
-class DeleteCommentUseCaseTest {
+class GetPostUseCaseTest {
 
     @Mock
     IPostRepository postRepository;
 
     @Test
-    @DisplayName("Should delete comment")
-    void deleteRegularComment() {
-        val usecase = new DeleteCommentUseCase(postRepository);
+    @DisplayName("Should get post by id")
+    void getPostById() {
+        val useCase = new GetPostUseCase(postRepository);
         val author = TestUserFactory.createRandom();
-        val comment = CommentModel.builder()
-                .id(1L)
-                .author(author)
-                .content(Faker.instance().lorem().sentence())
-                .build();
-        when(postRepository.findCommentById(1L)).thenReturn(comment);
+        val post = TestPostFactory.createRandom(author);
+        when(postRepository.findPostById(post.getId())).thenReturn(Optional.of(post));
 
-        usecase.execute(new DeleteCommentUseCase.Input(author.getId(), 1));
+        val output = useCase.execute(
+                new GetPostUseCase.Input(post.getId())
+        );
 
-        verify(postRepository).deleteComment(1L);
+        assertTrue(output.getPost().isPresent());
+        assertEquals(post.getTitle(), output.getPost().get().getTitle());
+        assertEquals(post.getContent(), output.getPost().get().getContent());
+        assertEquals(post.getAuthor(), output.getPost().get().getAuthor());
     }
 }

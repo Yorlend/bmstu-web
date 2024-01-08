@@ -3,7 +3,9 @@ package ru.bmstu.icsnetwork.data.repositories;
 import com.github.javafaker.Faker;
 import lombok.val;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
@@ -22,6 +24,7 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
+@TestMethodOrder(MethodOrderer.Random.class)
 class PostRepositoryTest {
 
     @Mock
@@ -36,7 +39,6 @@ class PostRepositoryTest {
         val repository = new PostRepository(jpaPostRepository, jpaCommentRepository);
         val author = TestUserFactory.createRandom();
         val post = TestPostFactory.createRandom(author);
-
         when(jpaPostRepository.save(any(PostEntity.class))).then(invocation -> {
             val entity = (PostEntity) invocation.getArgument(0);
             entity.setId(1L);
@@ -71,11 +73,11 @@ class PostRepositoryTest {
         val repository = new PostRepository(jpaPostRepository, jpaCommentRepository);
         val author = TestUserFactory.createRandom();
         val post = TestPostFactory.createRandom(author);
-        val comment = new CommentModel();
-        comment.setPost(post);
-        comment.setAuthor(author);
-        comment.setContent(Faker.instance().lorem().sentence());
-
+        val comment = CommentModel.builder()
+                .post(post)
+                .author(author)
+                .content(Faker.instance().lorem().sentence())
+                .build();
         when(jpaCommentRepository.save(any(CommentEntity.class))).then(invocation -> {
             val entity = (CommentEntity) invocation.getArgument(0);
             entity.setId(1L);
